@@ -9,6 +9,8 @@ apropriados, armazena dados estruturados em planilhas, gera propostas
 automaticamente e envia respostas personalizadas ou alertas de urgência.
 
 ------------------------------------------------------------------------
+<img width="891" height="666" alt="image" src="https://github.com/user-attachments/assets/8cbf1c94-d728-45fd-99c1-c9d9018dd5c9" />
+------------------------------------------------------------------------
 
 ## 🔄 Fluxo Geral
 
