@@ -2,31 +2,33 @@
 
 ## 📌 Objetivo
 
-O **Jornada_Agente_Email** é um agente inteligente desenvolvido em
-**n8n** para **automatizar o processamento de e-mails recebidos**.\
-Ele classifica mensagens com IA, organiza no Gmail com rótulos
-apropriados, armazena dados estruturados em planilhas, gera propostas
-automaticamente e envia respostas personalizadas ou alertas de urgência.
+O **Jornada_Agente_Email** é um agente inteligente construído em **n8n**
+para **automatizar a triagem, classificação e resposta de e-mails
+recebidos**.\
+Ele aplica **IA (Google Gemini)** para categorizar mensagens, direcionar
+fluxos diferentes para vendas, suporte e TI, além de criar registros no
+CRM, propostas em Google Docs e alertas via WhatsApp.
 
-------------------------------------------------------------------------
-<img width="891" height="666" alt="image" src="https://github.com/user-attachments/assets/8cbf1c94-d728-45fd-99c1-c9d9018dd5c9" />
+<img width="974" height="667" alt="image" src="https://github.com/user-attachments/assets/ff9a77a7-30f1-4736-813b-e2da94b0f042" />
+
+
 ------------------------------------------------------------------------
 
 ## 🔄 Fluxo Geral
 
-1.  **Captura** de novos e-mails não lidos.
-2.  **Classificação automática** do conteúdo com IA (Google Gemini +
-    Classificador de Texto).
-3.  **Ação personalizada** para cada categoria:
-    -   **Potencial Cliente** → Proposta inicial + registro em CRM.
-    -   **Aluno da Jornada** → Resposta automática de suporte.
-    -   **Spam** → Exclusão imediata.
-    -   **Interno ou Importante** → Alerta via WhatsApp.
-4.  **Execução adicional**:
-    -   Rótulos no Gmail.
-    -   Registro no Google Sheets.
-    -   Geração de documentos no Google Docs.
-    -   Envio de mensagens automáticas ou rascunhos.
+1.  **Captura de e-mails não lidos** no Gmail.\
+2.  **Classificação automática** com IA (Text Classifier + Gemini).\
+3.  **Encaminhamento para o fluxo correspondente**:
+    -   **Pré-vendas (Potencial Cliente)**\
+    -   **Suporte (Aluno da Jornada)**\
+    -   **Exclusão automática (Spam)**\
+    -   **TI/Operações (E-mails Internos ou Urgentes)**\
+4.  **Ações adicionais**:
+    -   Aplicação de rótulos no Gmail.\
+    -   Registro no **Google Sheets** (CRM).\
+    -   Criação e atualização de documentos no **Google Docs**.\
+    -   Integração com **Trello** (cards no funil de vendas e suporte).\
+    -   Envio de notificações via **WhatsApp API**.
 
 ------------------------------------------------------------------------
 
@@ -34,70 +36,90 @@ automaticamente e envia respostas personalizadas ou alertas de urgência.
 
 ### 1. Gmail Trigger
 
--   Captura novos e-mails **não lidos** a cada minuto.
+-   Captura novos e-mails **não lidos** a cada minuto.\
 -   Extrai: **assunto, remetente, data, corpo**.
 
-### 2. Classificação de Texto (IA)
+### 2. Text Classifier (IA)
 
--   Categorias:
-    -   **Potencial Cliente** → orçamento, proposta, parceria, serviço.
-    -   **Aluno da Jornada** → curso, acesso, pagamento, certificado.
-    -   **Spam ou Irrelevante** → oferta, promoção, sorteio,
-        unsubscribe.
-    -   **Interno ou Importante** → urgente, falha, erro, sistema,
-        alerta.
--   Modelo utilizado: **Google Gemini 2.5 Pro**.
+Classifica as mensagens em quatro categorias:
 
-### 3. Ações por Categoria
-
-#### 📂 Potencial Cliente
-
--   Rótulo no Gmail + marcar como lido.\
--   Passa para **AI Agent**, que gera JSON estruturado com:
-    -   Resumo técnico
-    -   Escopo
-    -   Estimativa de esforço
-    -   Stack sugerida
-    -   Perguntas para reunião
--   Registro no **Google Sheets (CRM)**.
--   Criação de **documento no Google Docs**.
--   Criação de **rascunho de e-mail de resposta automática**.
-
-#### 🎓 Aluno da Jornada
-
--   Rótulo + marcar como lido.\
--   **AI Agent** gera resposta automática.\
--   Envio de **mensagem personalizada** pelo Gmail.
-
-#### 🚫 Spam ou Irrelevante
-
--   Rótulo + marcar como lido.\
--   **Exclusão automática** do e-mail.
-
-#### ⚠️ Interno ou Importante
-
--   Rótulo + marcar como lido.\
--   **AI Agent** analisa urgência.
--   Se urgente → resumo curto enviado via **WhatsApp API**.
+-   **Potencial Cliente** → propostas, orçamento, parcerias, serviços.\
+-   **Aluno da Jornada** → dúvidas sobre curso, acesso, certificado,
+    pagamento.\
+-   **Spam ou Irrelevante** → promoções, sorteios, mensagens
+    automáticas.\
+-   **E-mail Interno ou Importante** → falhas, erros, alertas,
+    urgências.
 
 ------------------------------------------------------------------------
 
-## 📊 Estrutura do JSON (AI Agent)
+## 📂 Fluxos por Categoria
+
+### 🔹 Pré-vendas (Time Comercial)
+
+-   Rótulo no Gmail + marcar como lido.\
+-   **AI Agent 3** analisa a demanda técnica e gera JSON estruturado
+    com:
+    -   resumo técnico, escopo, estimativa de esforço, stack sugerida.\
+    -   dados do solicitante (nome, e-mail, data).\
+    -   perguntas-chave para a reunião.\
+-   Registros salvos no **Google Sheets** (CRM).\
+-   Criação de **documento no Google Docs** com a proposta.\
+-   Anexos e cards no **Trello -- Funil de Vendas**.\
+-   Notificação via **WhatsApp API** para equipe comercial.
+
+👉 **Responsável:** **Time de Vendas**
+
+------------------------------------------------------------------------
+
+### 🔹 Alunos da Jornada (Time de Suporte)
+
+-   Rótulo no Gmail + marcar como lido.\
+-   **AI Agent 1** gera resposta automática personalizada.\
+-   Envio imediato de **resposta ao aluno** via Gmail.\
+-   Registro no **Trello -- Suporte de TI** para acompanhamento.
+
+👉 **Responsável:** **Time de Suporte de TI**
+
+------------------------------------------------------------------------
+
+### 🔹 Spam ou Irrelevante
+
+-   Rótulo no Gmail + marcar como lido.\
+-   Exclusão automática do e-mail.
+
+👉 **Responsável:** **Fluxo automático (sem intervenção humana)**
+
+------------------------------------------------------------------------
+
+### 🔹 E-mails Internos ou Urgentes
+
+-   Rótulo no Gmail + marcar como lido.\
+-   **AI Agent 2** analisa a urgência:
+    -   URGENTE → envia resumo curto via **WhatsApp API**.\
+    -   NÃO URGENTE → apenas registra e classifica.\
+-   Comunicação imediata com equipe técnica.
+
+👉 **Responsável:** **Time de TI/Operações**
+
+------------------------------------------------------------------------
+
+## 📊 Estrutura do JSON (Pré-vendas)
 
 ``` json
 {
   "resumo": "Cliente deseja automatizar relatórios de vendas diários integrados ao ERP.",
-  "escopo": "Coleta de dados via API, transformação com dbt e visualização no Looker Studio.",
+  "escopo": "Coleta via API, transformação com dbt, visualização no Looker Studio.",
   "estimativa_de_esforco": "Coleta: 5 dias, Transformação: 3 dias, Visualização: 2 dias.",
   "stack_sugerida": "Airbyte, dbt, BigQuery, Looker Studio",
   "nome": "João da Silva",
   "email": "joao@empresa.com",
-  "data_de_recebimento": "2025-07-03T14:00:00Z",
+  "data_de_recebimento": "2025-09-14T10:00:00Z",
   "motivo_do_contato": "Automação de relatórios de vendas",
   "escopo_resumido": "Pipeline automatizado com dashboard integrado.",
   "estimativa_resumida": "3 semanas",
   "riscos_resumidos": "Instabilidade da API, falta de documentação.",
-  "perguntas_para_reuniao": "1. O ERP possui API documentada? 2. Há regras de limpeza dos dados? 3. Qual a ferramenta de visualização preferida?",
+  "perguntas_para_reuniao": "1. O ERP possui API documentada? 2. Há regras de limpeza? 3. Qual ferramenta de visualização preferida?",
   "subject": "Sobre sua solicitação – Projeto de Dados",
   "mensagem_email": "Olá João da Silva, recebemos sua solicitação e já estamos avaliando..."
 }
@@ -107,17 +129,18 @@ automaticamente e envia respostas personalizadas ou alertas de urgência.
 
 ## ⚙️ Integrações
 
--   **Gmail** → captura, rótulos, exclusões, respostas e rascunhos.\
--   **Google Sheets** → registro estruturado para CRM.\
--   **Google Docs** → criação de propostas automáticas.\
--   **WhatsApp API** → alertas imediatos para mensagens críticas.
+-   **Gmail** → captura, rótulos, exclusão, respostas.\
+-   **Google Sheets** → CRM de pré-vendas.\
+-   **Google Docs** → geração de propostas.\
+-   **Trello** → cards em funis de vendas e suporte.\
+-   **WhatsApp API** → notificações automáticas.
 
 ------------------------------------------------------------------------
 
 ## ✅ Benefícios
 
--   **Automatização ponta a ponta** do ciclo de atendimento.\
--   **Respostas rápidas e personalizadas** para clientes e alunos.\
--   **Classificação inteligente** de e-mails com IA.\
--   **Integração direta com CRM e documentos**.\
--   **Alertas instantâneos** para casos críticos.
+-   **Automação ponta a ponta** no atendimento a clientes, alunos e
+    equipe.\
+-   **Resposta rápida e personalizada** para cada perfil de e-mail.\
+-   **Organização no CRM e Trello**, reduzindo perdas de informação.\
+-   **Alertas imediatos via WhatsApp** em casos críticos.
