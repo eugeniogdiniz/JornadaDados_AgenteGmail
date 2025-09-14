@@ -90,96 +90,6 @@
         "operation": "addLabels",
         "messageId": "={{ $('Gmail Trigger').item.json.id }}",
         "labelIds": [
-          "Label_658843469248575570"
-        ]
-      },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.1,
-      "position": [
-        32,
-        -784
-      ],
-      "id": "b8765e41-cd2f-4d5f-86f5-5d3c6ed66714",
-      "name": "Add label to message",
-      "webhookId": "50259ef1-d5ad-43ec-bae4-4f2f929d82b0",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "9HEgtyh6pJR1HAwz",
-          "name": "Gmail account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "markAsRead",
-        "messageId": "={{ $('Gmail Trigger').item.json.id }}"
-      },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.1,
-      "position": [
-        256,
-        -784
-      ],
-      "id": "2be75762-039a-423a-94e7-464cad4e0b98",
-      "name": "Mark a message as read",
-      "webhookId": "07812003-fb41-442d-b499-4e0fc944b3a0",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "9HEgtyh6pJR1HAwz",
-          "name": "Gmail account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "addLabels",
-        "messageId": "={{ $('Gmail Trigger').item.json.id }}",
-        "labelIds": [
-          "Label_8440134919789898355"
-        ]
-      },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.1,
-      "position": [
-        32,
-        -288
-      ],
-      "id": "062d6bfc-785e-4c90-8988-062d69ff0263",
-      "name": "Add label to message1",
-      "webhookId": "50259ef1-d5ad-43ec-bae4-4f2f929d82b0",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "9HEgtyh6pJR1HAwz",
-          "name": "Gmail account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "markAsRead",
-        "messageId": "={{ $('Gmail Trigger').item.json.id }}"
-      },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.1,
-      "position": [
-        288,
-        -288
-      ],
-      "id": "98bacadc-f72b-4079-9170-0a4ae71d65a1",
-      "name": "Mark a message as read1",
-      "webhookId": "07812003-fb41-442d-b499-4e0fc944b3a0",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "9HEgtyh6pJR1HAwz",
-          "name": "Gmail account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "addLabels",
-        "messageId": "={{ $('Gmail Trigger').item.json.id }}",
-        "labelIds": [
           "Label_3818684664454427854"
         ]
       },
@@ -269,7 +179,7 @@
       "parameters": {
         "content": "## PROJETOS - AGENTE DE PRÉ VENDAS ",
         "height": 624,
-        "width": 2112
+        "width": 2368
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
@@ -279,6 +189,342 @@
       "typeVersion": 1,
       "id": "6aed4c70-8851-4643-bf0a-958d7a28d864",
       "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## ALUNOS- AGENTE DE COMUNICAÇÃO DE DÚVIDAS ",
+        "height": 512,
+        "width": 2368
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -48,
+        -400
+      ],
+      "typeVersion": 1,
+      "id": "88c82817-8175-4989-a602-f7272f3f2888",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## SPAM- AGENTE DE EXCLUSÃO DE E-MAILS DE SPAM ",
+        "height": 400,
+        "width": 2368,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -48,
+        128
+      ],
+      "typeVersion": 1,
+      "id": "74d44267-a132-4482-8e1c-d11ca22af320",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "messageId": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        464,
+        272
+      ],
+      "id": "bf25d9a6-d87d-4a6e-a530-606a313ffff0",
+      "name": "Delete a message",
+      "webhookId": "6e568e28-04ae-4b5a-b00c-868f0c416d14",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## CLASSIFICADOR- AGENTE DE CLASSIFICAÇÃO DE E-MAIL",
+        "height": 2096,
+        "width": 688,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -752,
+        -1040
+      ],
+      "typeVersion": 1,
+      "id": "0762c6dd-faa2-4d09-ae4e-45319b0aa267",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## URGÊNCIA- AGENTE DE ENVIO DE MENSAGENS NO WHATSAPPS ",
+        "height": 512,
+        "width": 2368
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -48,
+        544
+      ],
+      "typeVersion": 1,
+      "id": "11ab6140-f747-4d81-bc5f-eda2b8535953",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Data de recebimento: {{ $('Gmail Trigger').item.json.headers.date }}\nFrom: {{ $('Gmail Trigger').item.json.headers.from }}\nMensagem: {{ $('Gmail Trigger').item.json.text }}\n",
+        "options": {
+          "systemMessage": "Você é um agente inteligente que ajuda a classificar e resumir e-mails.\nSua tarefa é:\n1. Ler o conteúdo do e-mail fornecido.\n2. Analisar se a mensagem é urgente, com base em termos como: \"erro\", \"cancelamento\", \"problema\", \"atraso\", \"urgente\", \"reclamação\", \"falha\", \"responder hoje\", \"última tentativa\".\n3. Classificar a mensagem como:\n   - URGENTE: exige atenção imediata–\n   - NÃO URGENTE: pode ser lida depois\n   - IRRELEVANTE: spam, promoções, mensagens automáticas\n4. Criar uma resposta curta para ser enviada via WhatsApp, contendo:\n   - A classificação de urgência\n   - Um resumo breve (1 a 2 frases) do e-mail\n   - Um campo “ação sugerida” caso for URGENTE\nNão usar campos especiais ou quebras como \\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        512,
+        688
+      ],
+      "id": "b8fb7259-fe0a-4db9-9420-faa023f46c49",
+      "name": "AI Agent2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        432,
+        896
+      ],
+      "id": "72126607-8953-467f-8ec3-25e236fa7c82",
+      "name": "Google Gemini Chat Model3",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "rJGHj8xVHwntB8Xc",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://evolution.egdconsultoria.shop/message/sendText/ChatBot EGD",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "4DB810320F30-4001-B307-C04D2937BB77"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"+5511940502208\",\n    \"text\": \"{{ $json.output }}\"\n  }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        864,
+        688
+      ],
+      "id": "62cc564f-2f8c-4ce5-9e25-04bbe92cc276",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        656,
+        912
+      ],
+      "id": "7667e70b-1274-4c01-a2de-9cfb58c48697",
+      "name": "Think1"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('AI Agent3').item.json.output.email }}",
+        "subject": "={{ $('AI Agent3').item.json.output.subject }}",
+        "emailType": "text",
+        "message": "={{ $('AI Agent3').item.json.output.mensagem_email }}",
+        "options": {
+          "attachmentsUi": {
+            "attachmentsBinary": [
+              {}
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1824,
+        -816
+      ],
+      "id": "e0089172-1d2a-4ba0-b525-d7086e7cfbb7",
+      "name": "Send a message1",
+      "webhookId": "e0a6b390-03c5-4cda-82da-132a4964514d",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $('Create a document1').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1648,
+        -816
+      ],
+      "id": "37796e98-5892-4c60-9bff-30e93980499a",
+      "name": "Download file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "48LShjPz9YKD039E",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "attachment",
+        "operation": "create",
+        "cardId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "url": "=https://docs.google.com/document/d/{{ $('Create a document1').item.json.id }}/edit",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.trello",
+      "typeVersion": 1,
+      "position": [
+        2032,
+        -992
+      ],
+      "id": "9bd9eba3-dec0-40fc-bfd6-a29072a0723b",
+      "name": "Create Attachment - Funil de Vendas"
+    },
+    {
+      "parameters": {
+        "listId": "68c646a29b8e05abd15faece",
+        "name": "={{ $('transform_documents_proposta1').item.json.titulo }}",
+        "description": "={{ $('transform_documents_proposta1').item.json.projeto.resumo }}",
+        "additionalFields": {
+          "due": "2025-09-30T00:00:00"
+        }
+      },
+      "type": "n8n-nodes-base.trello",
+      "typeVersion": 1,
+      "position": [
+        1824,
+        -992
+      ],
+      "id": "fdb14be2-039c-46a4-a844-82a0cd935f22",
+      "name": "Create card - Funil de Vendas"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://evolution.egdconsultoria.shop/message/sendText/ChatBot EGD",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "4DB810320F30-4001-B307-C04D2937BB77"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $json.number }}\",\n    \"text\": \"{{ $json.text }}\"\n  }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1376,
+        -992
+      ],
+      "id": "30c42b29-c1b8-4e4a-8496-a8cf53071b25",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $json;\n\nreturn [\n  {\n    json: {\n      number: \"+5511940502208\",\n      text:\n`📊 *Nova Solicitação - ${data[\"Nome\"]}* 📊 ` +\n`📝 *Resumo*: ${data[\" Resumo\"]} ` +\n`📌 *Escopo*: ${data[\"Escopo resumido\"]} ` +\n`⏳ *Estimativa*: ${data[\"Estimativa Resumida\"]} ` +\n`⚠️ *Riscos*: ${data[\"Riscos Resumidos\"]} ` +\n`📧 *Contato*: ${data[\"Email\"]} ` +\n`📅 *Data*: ${data[\"Data de Recebimento\"]} ` +\n`❓ *Perguntas para Reunião*: ${data[\"Perguntas para Reunião\"]}`\n    }\n  }\n]\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1184,
+        -992
+      ],
+      "id": "0a21c61a-577e-4160-aa49-e0495af9e2c3",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}",
+        "labelIds": [
+          "Label_658843469248575570"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        32,
+        -784
+      ],
+      "id": "708bcd55-22ac-4bf0-bb2d-ff8fd130012e",
+      "name": "Add label to message4",
+      "webhookId": "50259ef1-d5ad-43ec-bae4-4f2f929d82b0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        256,
+        -784
+      ],
+      "id": "976d1623-8be1-45c1-8d96-2faddd6859fa",
+      "name": "Mark a message as read4",
+      "webhookId": "07812003-fb41-442d-b499-4e0fc944b3a0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
     },
     {
       "parameters": {
@@ -295,8 +541,8 @@
         512,
         -784
       ],
-      "id": "b8af2010-1a7c-42b1-a4c5-98b8b6539a20",
-      "name": "AI Agent"
+      "id": "6e401208-25a5-4d3f-94bc-50451ba9098e",
+      "name": "AI Agent3"
     },
     {
       "parameters": {
@@ -308,8 +554,8 @@
         384,
         -576
       ],
-      "id": "3579d085-3225-480f-8c21-2f52318c7016",
-      "name": "Google Gemini Chat Model1",
+      "id": "928728cd-874f-4100-971a-8eb0364c50a4",
+      "name": "Google Gemini Chat Model4",
       "credentials": {
         "googlePalmApi": {
           "id": "rJGHj8xVHwntB8Xc",
@@ -325,8 +571,8 @@
         640,
         -528
       ],
-      "id": "aee65a41-0e83-40af-9cb0-005784091ff5",
-      "name": "Think"
+      "id": "4c09cb21-053e-4783-bfad-b2788dfd8af6",
+      "name": "Think2"
     },
     {
       "parameters": {
@@ -483,10 +729,10 @@
       "typeVersion": 4.7,
       "position": [
         976,
-        -864
+        -992
       ],
-      "id": "427e3afb-c7bc-4071-b51e-14c78c7c1295",
-      "name": "Append row in sheet",
+      "id": "ac7625c6-7a38-4240-b712-39342bdcf219",
+      "name": "Append row in sheet1",
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "O714q9hLnG61u8xY",
@@ -504,8 +750,8 @@
         800,
         -576
       ],
-      "id": "fa0de7c5-49d3-49ff-a381-e2c96860550f",
-      "name": "Structured Output Parser"
+      "id": "2f521bb9-56d7-49b5-83b5-08b82338982b",
+      "name": "Structured Output Parser2"
     },
     {
       "parameters": {
@@ -515,11 +761,11 @@
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
       "position": [
-        1376,
-        -688
+        1312,
+        -816
       ],
-      "id": "26b16e2a-fbb4-4ddc-a905-9f2a3c6909d1",
-      "name": "Create a document",
+      "id": "85c31190-8621-4ee1-aeab-a2d23a21b413",
+      "name": "Create a document1",
       "credentials": {
         "googleDocsOAuth2Api": {
           "id": "Uy4QDHbajHPeyziq",
@@ -536,7 +782,7 @@
           "actionFields": [
             {
               "action": "insert",
-              "text": "={{ $('Code').item.json.texto }}"
+              "text": "={{ $('Code2').item.json.texto }}"
             }
           ]
         }
@@ -544,11 +790,11 @@
       "type": "n8n-nodes-base.googleDocs",
       "typeVersion": 2,
       "position": [
-        1600,
-        -688
+        1488,
+        -816
       ],
-      "id": "9b160a44-b84b-481b-b6de-e282481ea118",
-      "name": "Update a document",
+      "id": "02cf7434-42fd-45d7-9cc8-dbf02b093735",
+      "name": "Update a document1",
       "credentials": {
         "googleDocsOAuth2Api": {
           "id": "Uy4QDHbajHPeyziq",
@@ -566,40 +812,39 @@
         976,
         -688
       ],
-      "id": "885fd7d3-d266-4108-b933-27207efb8f89",
-      "name": "transform_documents_proposta"
+      "id": "661b759a-6b1d-4a7a-b8d1-027a3799c72c",
+      "name": "transform_documents_proposta1"
     },
     {
       "parameters": {
-        "jsCode": "const data = items[0].json; // seu transform_documents_proposta\n\nlet texto = `\n📄 ${data.titulo}\nData de recebimento: ${data.data_recebimento}\n\n👤 Cliente\nNome: ${data.cliente.nome}\nEmail: ${data.cliente.email}\nMotivo: ${data.cliente.motivo}\n\n📌 Projeto\nResumo: ${data.projeto.resumo}\nEscopo: ${data.projeto.escopo}\nEscopo resumido: ${data.projeto.escopo_resumido}\nEstimativa detalhada: ${data.projeto.estimativa}\nEstimativa resumida: ${data.projeto.estimativa_resumida}\nStack sugerida: ${data.projeto.stack_sugerida}\nRiscos: ${data.projeto.riscos}\n\n🗓️ Reunião\nPerguntas:\n- ${data.reuniao.perguntas.join(\"\\n- \")}\n\n📨 Comunicação\nAssunto: ${data.comunicacao.assunto_email}\nMensagem:\n${data.comunicacao.mensagem_email}\n`;\n\nreturn [{ json: { texto } }];\n"
+        "jsCode": "const data = items[0].json; // seu transform_documents_proposta\n\nlet texto = `\n📄 ${data.titulo}\nData de recebimento: ${data.data_recebimento}\n\n👤 Cliente\nNome: ${data.cliente.nome}\nEmail: ${data.cliente.email}\nMotivo: ${data.cliente.motivo}\n\n📌 Projeto\nResumo: ${data.projeto.resumo}\nEscopo: ${data.projeto.escopo}\nEscopo resumido: ${data.projeto.escopo_resumido}\nEstimativa detalhada: ${data.projeto.estimativa}\nEstimativa resumida: ${data.projeto.estimativa_resumida}\nStack sugerida: ${data.projeto.stack_sugerida}\nRiscos: ${data.projeto.riscos}\n\n🗓️ Reunião1\nPerguntas:\n- ${data.reuniao.perguntas.join(\"\\n- \")}\n\n📨 Comunicação\nAssunto: ${data.comunicacao.assunto_email}\nMensagem:\n${data.comunicacao.mensagem_email}\n`;\n\nreturn [{ json: { texto } }];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1168,
-        -688
+        1136,
+        -816
       ],
-      "id": "03edb068-886b-43aa-b5c9-302562e9b6d8",
-      "name": "Code"
+      "id": "a03cffe8-8819-420f-9b39-ef7674e1b0c9",
+      "name": "Code2"
     },
     {
       "parameters": {
-        "resource": "draft",
-        "subject": "={{ $('AI Agent').item.json.output.subject }}",
-        "message": "={{ $('AI Agent').item.json.output.mensagem_email }}",
-        "options": {
-          "sendTo": "={{ $json.output.email }}"
-        }
+        "operation": "addLabels",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}",
+        "labelIds": [
+          "Label_8440134919789898355"
+        ]
       },
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        976,
-        -1024
+        16,
+        -288
       ],
-      "id": "fbb81a23-3fde-494b-9aac-a4340ceb58f3",
-      "name": "Create a draft",
-      "webhookId": "4027342f-0278-40c0-a940-039c9cecf078",
+      "id": "af3c816d-15ee-4b51-bad0-d8762bc49185",
+      "name": "Add label to message1",
+      "webhookId": "50259ef1-d5ad-43ec-bae4-4f2f929d82b0",
       "credentials": {
         "gmailOAuth2": {
           "id": "9HEgtyh6pJR1HAwz",
@@ -609,18 +854,24 @@
     },
     {
       "parameters": {
-        "content": "## ALUNOS- AGENTE DE COMUNICAÇÃO DE DÚVIDAS ",
-        "height": 512,
-        "width": 2112
+        "operation": "markAsRead",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}"
       },
-      "type": "n8n-nodes-base.stickyNote",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
       "position": [
-        -48,
-        -400
+        272,
+        -288
       ],
-      "typeVersion": 1,
-      "id": "88c82817-8175-4989-a602-f7272f3f2888",
-      "name": "Sticky Note1"
+      "id": "dd928b3e-ac2c-4118-a23d-d8b68ae51b01",
+      "name": "Mark a message as read1",
+      "webhookId": "07812003-fb41-442d-b499-4e0fc944b3a0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
     },
     {
       "parameters": {
@@ -634,10 +885,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        512,
+        496,
         -288
       ],
-      "id": "89bea47a-c631-4a93-a341-a01b5fe296bc",
+      "id": "8fea1430-e86a-4c2e-a7c2-5a7ac4a7d70a",
       "name": "AI Agent1"
     },
     {
@@ -647,10 +898,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        432,
+        416,
         -32
       ],
-      "id": "6105f99c-8031-4c0e-8770-a28902c2528a",
+      "id": "cb3e15b1-a8af-410b-af6e-2aeab2b89360",
       "name": "Google Gemini Chat Model2",
       "credentials": {
         "googlePalmApi": {
@@ -666,10 +917,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        688,
+        672,
         -64
       ],
-      "id": "4326401d-45f1-4da8-82ce-cf504c1f6711",
+      "id": "3707b556-0e3b-45e0-9d35-7a04ca9ae9a8",
       "name": "Structured Output Parser1"
     },
     {
@@ -683,10 +934,10 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        832,
+        816,
         -288
       ],
-      "id": "27673598-81fa-4097-bf97-5064ac3215d2",
+      "id": "e338adcd-0ab8-449a-9034-a4621a8f0d94",
       "name": "Send a message",
       "webhookId": "4027342f-0278-40c0-a940-039c9cecf078",
       "credentials": {
@@ -698,148 +949,88 @@
     },
     {
       "parameters": {
-        "content": "## SPAM- AGENTE DE EXCLUSÃO DE E-MAILS DE SPAM ",
-        "height": 400,
-        "width": 2112,
-        "color": 3
+        "listId": "68c6411a6a08e1b3994f0e16",
+        "name": "={{ $('AI Agent1').item.json.output.subject }}",
+        "description": "={{ $('AI Agent1').item.json.output.mensagem_email }}",
+        "additionalFields": {}
       },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -48,
-        128
-      ],
-      "typeVersion": 1,
-      "id": "74d44267-a132-4482-8e1c-d11ca22af320",
-      "name": "Sticky Note2"
-    },
-    {
-      "parameters": {
-        "operation": "delete",
-        "messageId": "={{ $json.id }}"
-      },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.1,
-      "position": [
-        464,
-        272
-      ],
-      "id": "bf25d9a6-d87d-4a6e-a530-606a313ffff0",
-      "name": "Delete a message",
-      "webhookId": "6e568e28-04ae-4b5a-b00c-868f0c416d14",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "9HEgtyh6pJR1HAwz",
-          "name": "Gmail account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "content": "## CLASSIFICADOR- AGENTE DE CLASSIFICAÇÃO DE E-MAIL",
-        "height": 2096,
-        "width": 688,
-        "color": 4
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -752,
-        -1040
-      ],
-      "typeVersion": 1,
-      "id": "0762c6dd-faa2-4d09-ae4e-45319b0aa267",
-      "name": "Sticky Note3"
-    },
-    {
-      "parameters": {
-        "content": "## URGÊNCIA- AGENTE DE ENVIO DE MENSAGENS NO WHATSAPPS ",
-        "height": 512,
-        "width": 2112
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -48,
-        544
-      ],
-      "typeVersion": 1,
-      "id": "11ab6140-f747-4d81-bc5f-eda2b8535953",
-      "name": "Sticky Note4"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=Data de recebimento: {{ $('Gmail Trigger').item.json.headers.date }}\nFrom: {{ $('Gmail Trigger').item.json.headers.from }}\nMensagem: {{ $('Gmail Trigger').item.json.text }}\n",
-        "options": {
-          "systemMessage": "Você é um agente inteligente que ajuda a classificar e resumir e-mails.\nSua tarefa é:\n1. Ler o conteúdo do e-mail fornecido.\n2. Analisar se a mensagem é urgente, com base em termos como: \"erro\", \"cancelamento\", \"problema\", \"atraso\", \"urgente\", \"reclamação\", \"falha\", \"responder hoje\", \"última tentativa\".\n3. Classificar a mensagem como:\n   - URGENTE: exige atenção imediata–\n   - NÃO URGENTE: pode ser lida depois\n   - IRRELEVANTE: spam, promoções, mensagens automáticas\n4. Criar uma resposta curta para ser enviada via WhatsApp, contendo:\n   - A classificação de urgência\n   - Um resumo breve (1 a 2 frases) do e-mail\n   - Um campo “ação sugerida” caso for URGENTE\nNão usar campos especiais ou quebras como \\n\n"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 2.2,
-      "position": [
-        512,
-        688
-      ],
-      "id": "b8fb7259-fe0a-4db9-9420-faa023f46c49",
-      "name": "AI Agent2"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "type": "n8n-nodes-base.trello",
       "typeVersion": 1,
       "position": [
-        432,
-        896
+        1056,
+        -288
       ],
-      "id": "72126607-8953-467f-8ec3-25e236fa7c82",
-      "name": "Google Gemini Chat Model3",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "rJGHj8xVHwntB8Xc",
-          "name": "Google Gemini(PaLM) Api account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://evolution.egdconsultoria.shop/message/sendText/ChatBot EGD",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "4DB810320F30-4001-B307-C04D2937BB77"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"number\": \"+5511940502208\",\n    \"text\": \"{{ $json.output }}\"\n  }",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        864,
-        688
-      ],
-      "id": "62cc564f-2f8c-4ce5-9e25-04bbe92cc276",
-      "name": "HTTP Request"
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.toolThink",
-      "typeVersion": 1.1,
-      "position": [
-        656,
-        912
-      ],
-      "id": "7667e70b-1274-4c01-a2de-9cfb58c48697",
-      "name": "Think1"
+      "id": "6a9f1fa7-3490-4b11-8920-a6b214edae08",
+      "name": "Create card - Suporte de TI"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Gmail Trigger": [
+      {
+        "json": {
+          "id": "1994659880491b43",
+          "threadId": "1994659880491b43",
+          "labelIds": [
+            "Label_658843469248575570",
+            "UNREAD",
+            "CATEGORY_PERSONAL",
+            "INBOX"
+          ],
+          "sizeEstimate": 8471,
+          "headers": {
+            "delivered-to": "Delivered-To: leninediniz2710@gmail.com",
+            "received": "Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])\r\n        by mx.google.com with SMTPS id 98e67ed59e1d1-32dd980c332sor5352172a91.2.2025.09.13.20.51.36\r\n        for <leninediniz2710@gmail.com>\r\n        (Google Transport Security);\r\n        Sat, 13 Sep 2025 20:51:37 -0700 (PDT)",
+            "x-received": "X-Received: by 2002:a17:90b:1dce:b0:32d:e2c1:2f6f with SMTP id\r\n 98e67ed59e1d1-32de4e77847mr9406022a91.5.1757821896429; Sat, 13 Sep 2025\r\n 20:51:36 -0700 (PDT)",
+            "arc-seal": "ARC-Seal: i=1; a=rsa-sha256; t=1757821897; cv=none;\r\n        d=google.com; s=arc-20240605;\r\n        b=fkZHc56GZsU3fU/GldHQ+yiG1XTaXPm6QM4BLUuBHA/zD7WcnVlB+1B4dGOtWGPDek\r\n         C26TJPAufj4E2oHEU8D3i1xlOIJZZFvga5sQxQ2YFRWTCupJPDCJGTPfRQp0Ei9BM9rh\r\n         ylhZjFTLuyoV0FpbrJa+5TTeoaHjpXRntG6jxXcafSRRrjBiQSysgZzIL5B59DRGqd3e\r\n         MwkRmLF2W3idQ5aQMt0FONqLQakyP2S6uyt1/jWVOTOcmOvX1ZBjBf5mvf3M6l8R1k9S\r\n         EmpCe5ZG8vK9zwosKSiSGnAACM4F7H9KWFGZyf5azmVZR4Mq+lDbrKRb0BzyuG4Tm31f\r\n         cB7g==",
+            "arc-message-signature": "ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;\r\n        h=to:subject:message-id:date:from:mime-version:dkim-signature;\r\n        bh=xz+vrnDzAwblkeK7FIgIo86ApuTVjKc6CAlH3CH+27g=;\r\n        fh=ewIynaBVy5AZR1BK/0HHDg6AD6m6jzYQkCeyPOUIchk=;\r\n        b=FIgPQ9PI2zbYgJOvbAcukrSwGOcWYuabPt6yyDToDaCokH/2/645ku3QrNkQuqwOGH\r\n         RkYDXcndSTxwVjyrCFOg0GPhOqwhFOocNaDdfsxDatLQffcg6CK55ykINpmOHkA8ZTS9\r\n         yyxdzSRGUo6QwVXzYn88uHoKevET+WXeBPi1ih1Wz+B0eJzDAAvulnOeMWJ/Y82IT2A0\r\n         hIIfOWzNcf8VuEny9kz7G0XoiMKumTm69yarbRmni8880l2kI8t/0xs9dgB2Q7+ZOqdy\r\n         Y7AL3XGhkjMjmgBc6QXK0/+wwmV+f5FoqxlPX/MLX1rAc35Lnp/hzVI38yVcMNteXf0S\r\n         Nx/Q==;\r\n        dara=google.com",
+            "arc-authentication-results": "ARC-Authentication-Results: i=1; mx.google.com;\r\n       dkim=pass header.i=@gmail.com header.s=20230601 header.b=k2I20UoW;\r\n       spf=pass (google.com: domain of francesosasco@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesosasco@gmail.com;\r\n       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;\r\n       dara=pass header.i=@gmail.com",
+            "return-path": "Return-Path: <francesosasco@gmail.com>",
+            "received-spf": "Received-SPF: pass (google.com: domain of francesosasco@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;",
+            "authentication-results": "Authentication-Results: mx.google.com;\r\n       dkim=pass header.i=@gmail.com header.s=20230601 header.b=k2I20UoW;\r\n       spf=pass (google.com: domain of francesosasco@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=francesosasco@gmail.com;\r\n       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;\r\n       dara=pass header.i=@gmail.com",
+            "dkim-signature": "DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;\r\n        d=gmail.com; s=20230601; t=1757821896; x=1758426696; dara=google.com;\r\n        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject\r\n         :date:message-id:reply-to;\r\n        bh=xz+vrnDzAwblkeK7FIgIo86ApuTVjKc6CAlH3CH+27g=;\r\n        b=k2I20UoWXzNuq8SmdRiAJ+G4ZDXnH7gb+3qph06Rdeh8Q1Ps4TPqeZrflVgNorbpDh\r\n         djPpdSJuJE+sfRSW4uwXB0kywyg6ogmiGEUgSAmuS1JF+N/WfpI88UqOyeax84Dy61YM\r\n         tYJHuhfmz60jc++UEA4lMuZf0aBqz+kNl2nHj3bfMueYK3B/5vyVE0rD8q5yfO9mQOTG\r\n         FyqBR8+QKGr2oc24ptGI6o9pY7I8HNYkXd69d4/axtN0a8P5d+A+vSOPYgTzuK2GzxpS\r\n         eiltaO4bob7A24D5JvE9Inpz3pqgKRXVI5c3bPOW0FpQY0BplN9JCbqH2HQ3rsgOAO6E\r\n         TmqQ==",
+            "x-google-dkim-signature": "X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;\r\n        d=1e100.net; s=20230601; t=1757821896; x=1758426696;\r\n        h=to:subject:message-id:date:from:mime-version:x-gm-message-state\r\n         :from:to:cc:subject:date:message-id:reply-to;\r\n        bh=xz+vrnDzAwblkeK7FIgIo86ApuTVjKc6CAlH3CH+27g=;\r\n        b=SVO3i8IkIObI1z/yjAvxL3vaZqv55BImHKN/guIPzixR0mohot7V3I7915GQxGKgzN\r\n         g1q6Hj3a5drE3o+RRVK6uk/t9+P0MaofRD2qLFoLT2YHDxCov03zJZgip4gU6aeRvlmV\r\n         BolihkvDXruj3are8b/nzkWvpKSXRbqPKbg8KpKCI08yJORvSnhyh2iBgQhpLktN85JO\r\n         bUqO/NeR72CYPOQqn2olCWp18hriIw13WE8yqQqnQeMuq8jOHA9x3TvrC65e388ov/X9\r\n         BO+GpFQuHLFoEjtUe8zl5pfX0DCoyyVX+hkFu8HPz2LqS2w7XWXlUc4/Um/4vG1fj0lj\r\n         mz/w==",
+            "x-gm-message-state": "X-Gm-Message-State: AOJu0Yz7h38uvHf8EBufTHlq8lGyrTDyES8xCe0A/d9pAsUMIIRInxIQ\r\n\tyW6nyPHZqyoeFG8LQPv5gHUA44GmjlfOct8TMzYfJ9eV0QFlvksiFfi/dqzd1u6+5M7oPF+bEvs\r\n\th2mJOhisaTj077KO0OmVHS9U6iiSgjoCp1OoJ",
+            "x-gm-gg": "X-Gm-Gg: ASbGncs1N8divxPVJBfwc8ksxGK6sdPIvh/n1rCHHYimBFQBzkwsDTQ3UQ3fQKPhat9\r\n\tuq3TQABVm514PTWr4AwmPl7lSJx4qEuExjhvn22OO6T2zKitka9DQyWjXxprkF143fsJ7+j+BsL\r\n\twdqFF7+AvKYI07FNxtzLp+euohtf5QVBkyWqm2PVPSY4yWrGcyDi7N3u2uG0XA45RXeQo05Irz/\r\n\tblPvOK/ZTJbIHpck/Fs965N9N0Oq+tMERVHwNrVYagxPoPzIQ==",
+            "x-google-smtp-source": "X-Google-Smtp-Source: AGHT+IHrfNc+TWru3iCd3wgXFJeYudifR4d1VBDqq9PknlwuAfRAEsLXx11FyeQmJkwG1Cem6dQFgimIdz6u8vwD3jI=",
+            "mime-version": "MIME-Version: 1.0",
+            "from": "From: Brasil Idiomas <francesosasco@gmail.com>",
+            "date": "Date: Sun, 14 Sep 2025 00:51:22 -0300",
+            "x-gm-features": "X-Gm-Features: Ac12FXwlyubxUtg5Rg1pMkx3WeKzH5YCUzo7gyifGnKTf-yU-k5NVeTcEfuf-XY",
+            "message-id": "Message-ID: <CACeCkSrgzZAsrf_nrTUjaXfeVJCXH01=ctBjxQLW9rsv1_wMKw@mail.gmail.com>",
+            "subject": "Subject: =?UTF-8?B?U29saWNpdGHDp8OjbyBkZSBvcsOnYW1lbnRvIGUgYWdlbmRhIGRlIHJldW5pw6NvIOKAkw==?=\r\n\t=?UTF-8?B?IFtQcm9qZXRvL1NlcnZpw6dvXQ==?=",
+            "to": "To: Eugenio Lenine <leninediniz2710@gmail.com>",
+            "content-type": "Content-Type: multipart/alternative; boundary=\"000000000000b71529063ebacd0d\""
+          },
+          "html": "<div dir=\"ltr\"><div><p>Meu nome é <strong>[Seu Nome]</strong>, da <strong>[Sua Empresa]</strong>. Temos interesse em <strong>[consultoria/projeto/serviço específico]</strong> e gostaríamos de entender melhor a proposta de vocês para <strong>[objetivo ou problema a resolver]</strong>.</p>\n<p><strong>Escopo inicial (resumo):</strong></p>\n<ul>\n<li>\n<p>Contexto: [breve contexto do negócio]</p>\n</li>\n<li>\n<p>Necessidades: [ex.: implementação de pipeline de dados, dashboards, automação de processos]</p>\n</li>\n<li>\n<p>Prazo desejado: [data/estimativa]</p>\n</li>\n<li>\n<p>Orçamento estimado (opcional): [faixa ou “a definir”]</p>\n</li>\n</ul>\n<p>Poderiam, por favor:</p>\n<ol>\n<li>\n<p>Enviar <strong>uma proposta</strong> (com escopo, etapas, prazos e valores);</p>\n</li>\n<li>\n<p>Sugerir <strong>horários para uma reunião</strong> de alinhamento nesta semana (ou <strong>[2–3 opções de data/hora]</strong>)?</p>\n</li>\n</ol>\n<p><strong>Informações de contato:</strong></p>\n<ul>\n<li>\n<p>Nome: [Seu Nome]</p>\n</li>\n<li>\n<p>Cargo: [Seu Cargo]</p>\n</li>\n<li>\n<p>Empresa: [Sua Empresa]</p>\n</li>\n<li>\n<p>E-mail: [<a class=\"gmail-decorated-link gmail-cursor-pointer\" rel=\"noopener\">seuemail@empresa.com<span aria-hidden=\"true\" class=\"gmail-ms-0.5 gmail-inline-block gmail-align-middle gmail-leading-none\"></span></a>]</p>\n</li>\n<li>\n<p>Telefone/WhatsApp: [DDD + número]</p></li></ul></div></div>\n",
+          "text": "Meu nome é *[Seu Nome]*, da *[Sua Empresa]*. Temos interesse em\n*[consultoria/projeto/serviço\nespecífico]* e gostaríamos de entender melhor a proposta de vocês para\n*[objetivo\nou problema a resolver]*.\n\n*Escopo inicial (resumo):*\n\n   -\n\n   Contexto: [breve contexto do negócio]\n   -\n\n   Necessidades: [ex.: implementação de pipeline de dados, dashboards,\n   automação de processos]\n   -\n\n   Prazo desejado: [data/estimativa]\n   -\n\n   Orçamento estimado (opcional): [faixa ou “a definir”]\n\nPoderiam, por favor:\n\n   1.\n\n   Enviar *uma proposta* (com escopo, etapas, prazos e valores);\n   2.\n\n   Sugerir *horários para uma reunião* de alinhamento nesta semana (ou *[2–3\n   opções de data/hora]*)?\n\n*Informações de contato:*\n\n   -\n\n   Nome: [Seu Nome]\n   -\n\n   Cargo: [Seu Cargo]\n   -\n\n   Empresa: [Sua Empresa]\n   -\n\n   E-mail: [seuemail@empresa.com]\n   -\n\n   Telefone/WhatsApp: [DDD + número]\n",
+          "textAsHtml": "<p>Meu nome &eacute; *[Seu Nome]*, da *[Sua Empresa]*. Temos interesse em<br/>*[consultoria/projeto/servi&ccedil;o<br/>espec&iacute;fico]* e gostar&iacute;amos de entender melhor a proposta de voc&ecirc;s para<br/>*[objetivo<br/>ou problema a resolver]*.</p><p>*Escopo inicial (resumo):*</p><p>   -</p><p>   Contexto: [breve contexto do neg&oacute;cio]<br/>   -</p><p>   Necessidades: [ex.: implementa&ccedil;&atilde;o de pipeline de dados, dashboards,<br/>   automa&ccedil;&atilde;o de processos]<br/>   -</p><p>   Prazo desejado: [data/estimativa]<br/>   -</p><p>   Or&ccedil;amento estimado (opcional): [faixa ou &ldquo;a definir&rdquo;]</p><p>Poderiam, por favor:</p><p>   1.</p><p>   Enviar *uma proposta* (com escopo, etapas, prazos e valores);<br/>   2.</p><p>   Sugerir *hor&aacute;rios para uma reuni&atilde;o* de alinhamento nesta semana (ou *[2&ndash;3<br/>   op&ccedil;&otilde;es de data/hora]*)?</p><p>*Informa&ccedil;&otilde;es de contato:*</p><p>   -</p><p>   Nome: [Seu Nome]<br/>   -</p><p>   Cargo: [Seu Cargo]<br/>   -</p><p>   Empresa: [Sua Empresa]<br/>   -</p><p>   E-mail: [seuemail@empresa.com]<br/>   -</p><p>   Telefone/WhatsApp: [DDD + n&uacute;mero]</p>",
+          "subject": "Solicitação de orçamento e agenda de reunião – [Projeto/Serviço]",
+          "date": "2025-09-14T03:51:22.000Z",
+          "to": {
+            "value": [
+              {
+                "address": "leninediniz2710@gmail.com",
+                "name": "Eugenio Lenine"
+              }
+            ],
+            "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">Eugenio Lenine</span> &lt;<a href=\"mailto:leninediniz2710@gmail.com\" class=\"mp_address_email\">leninediniz2710@gmail.com</a>&gt;</span>",
+            "text": "\"Eugenio Lenine\" <leninediniz2710@gmail.com>"
+          },
+          "from": {
+            "value": [
+              {
+                "address": "francesosasco@gmail.com",
+                "name": "Brasil Idiomas"
+              }
+            ],
+            "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">Brasil Idiomas</span> &lt;<a href=\"mailto:francesosasco@gmail.com\" class=\"mp_address_email\">francesosasco@gmail.com</a>&gt;</span>",
+            "text": "\"Brasil Idiomas\" <francesosasco@gmail.com>"
+          },
+          "messageId": "<CACeCkSrgzZAsrf_nrTUjaXfeVJCXH01=ctBjxQLW9rsv1_wMKw@mail.gmail.com>"
+        }
+      }
+    ]
+  },
   "connections": {
     "Gmail Trigger": {
       "main": [
@@ -867,7 +1058,7 @@
       "main": [
         [
           {
-            "node": "Add label to message",
+            "node": "Add label to message4",
             "type": "main",
             "index": 0
           }
@@ -895,28 +1086,6 @@
         ]
       ]
     },
-    "Add label to message": {
-      "main": [
-        [
-          {
-            "node": "Mark a message as read",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Add label to message1": {
-      "main": [
-        [
-          {
-            "node": "Mark a message as read1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Add label to message2": {
       "main": [
         [
@@ -933,153 +1102,6 @@
         [
           {
             "node": "Mark a message as read3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Mark a message as read": {
-      "main": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Gemini Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Think": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Append row in sheet",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "transform_documents_proposta",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Create a draft",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Structured Output Parser": {
-      "ai_outputParser": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_outputParser",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create a document": {
-      "main": [
-        [
-          {
-            "node": "Update a document",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "transform_documents_proposta": {
-      "main": [
-        [
-          {
-            "node": "Code",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code": {
-      "main": [
-        [
-          {
-            "node": "Create a document",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Update a document": {
-      "main": [
-        []
-      ]
-    },
-    "Mark a message as read1": {
-      "main": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Gemini Chat Model2": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Structured Output Parser1": {
-      "ai_outputParser": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "ai_outputParser",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "AI Agent1": {
-      "main": [
-        [
-          {
-            "node": "Send a message",
             "type": "main",
             "index": 0
           }
@@ -1140,13 +1162,243 @@
           }
         ]
       ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create card - Funil de Vendas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create card - Funil de Vendas": {
+      "main": [
+        [
+          {
+            "node": "Create Attachment - Funil de Vendas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add label to message4": {
+      "main": [
+        [
+          {
+            "node": "Mark a message as read4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark a message as read4": {
+      "main": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent3": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "transform_documents_proposta1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think2": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser2": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a document1": {
+      "main": [
+        [
+          {
+            "node": "Update a document1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a document1": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "transform_documents_proposta1": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Create a document1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add label to message1": {
+      "main": [
+        [
+          {
+            "node": "Mark a message as read1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark a message as read1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Create card - Suporte de TI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "67f96193-b641-4cd4-b822-d6a7b0387f20",
+  "versionId": "a6e0d368-99c0-49b6-832c-0128a5151c33",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "b7c1fe45e78f5953159ad165952c76ae1ea1f19abedddb299bd3459a46f42217"
