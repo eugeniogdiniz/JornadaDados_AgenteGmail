@@ -1,0 +1,1156 @@
+{
+  "name": "Jorndada_Agente_Email",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {
+          "readStatus": "unread"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -672,
+        0
+      ],
+      "id": "83edb933-1bf5-449a-9b08-43da2036fccf",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputText": "=Título: {{ $json.subject }} \n\nTexto:{{ $json.text }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "Potencial Cliente",
+              "description": "Descrição: E-mails com interesse comercial, propostas de parceria, orçamento, agendamento de reunião ou dúvidas sobre serviços da Red Rex ou ZapFlow.  Palavras-chave que ajudam na classificação: orçamento, proposta, parceria, reunião, consultoria, projeto, serviço, empresa"
+            },
+            {
+              "category": "Aluno da Jornada",
+              "description": "Mensagens de alunos com dúvidas sobre conteúdo, acesso à plataforma, problemas com pagamento, ou suporte geral da Jornada de Dados.  Palavras-chave: acesso, curso, jornada, plataforma, pagamento, aula, inscrição, certificado"
+            },
+            {
+              "category": "Spam ou Irrelevante",
+              "description": "Descrição: E-mails genéricos, promoções automáticas, listas de e-mails ou conteúdo não solicitado.  Palavras-chave: oferta, promoção, black friday, ganhe dinheiro, última chance, sorteio, unsubscribe"
+            },
+            {
+              "category": "E-mail Interno ou Importante",
+              "description": "Descrição: E-mails com informações críticas, avisos do time, problemas técnicos ou alertas de sistemas internos.  Palavras-chave: urgente, falha, erro, sistema, produção, equipe, reunião, alerta, interno"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1.1,
+      "position": [
+        -432,
+        -32
+      ],
+      "id": "ab2788f2-974d-484c-abda-cdb80c836816",
+      "name": "Text Classifier"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -512,
+        256
+      ],
+      "id": "abe9051b-8d13-449f-a21b-d3847d5dd550",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "rJGHj8xVHwntB8Xc",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}",
+        "labelIds": [
+          "Label_658843469248575570"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        32,
+        -784
+      ],
+      "id": "b8765e41-cd2f-4d5f-86f5-5d3c6ed66714",
+      "name": "Add label to message",
+      "webhookId": "50259ef1-d5ad-43ec-bae4-4f2f929d82b0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        256,
+        -784
+      ],
+      "id": "2be75762-039a-423a-94e7-464cad4e0b98",
+      "name": "Mark a message as read",
+      "webhookId": "07812003-fb41-442d-b499-4e0fc944b3a0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}",
+        "labelIds": [
+          "Label_8440134919789898355"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        32,
+        -288
+      ],
+      "id": "062d6bfc-785e-4c90-8988-062d69ff0263",
+      "name": "Add label to message1",
+      "webhookId": "50259ef1-d5ad-43ec-bae4-4f2f929d82b0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        288,
+        -288
+      ],
+      "id": "98bacadc-f72b-4079-9170-0a4ae71d65a1",
+      "name": "Mark a message as read1",
+      "webhookId": "07812003-fb41-442d-b499-4e0fc944b3a0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}",
+        "labelIds": [
+          "Label_3818684664454427854"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        48,
+        272
+      ],
+      "id": "85a655ef-159a-49b1-8c20-3d3b28113e99",
+      "name": "Add label to message2",
+      "webhookId": "50259ef1-d5ad-43ec-bae4-4f2f929d82b0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        256,
+        272
+      ],
+      "id": "a5f65d13-c708-4511-a02b-e871f071d161",
+      "name": "Mark a message as read2",
+      "webhookId": "07812003-fb41-442d-b499-4e0fc944b3a0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}",
+        "labelIds": [
+          "Label_8146117535830577808"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        64,
+        688
+      ],
+      "id": "9ba5f889-7603-4ef2-86e1-5676116fa56a",
+      "name": "Add label to message3",
+      "webhookId": "50259ef1-d5ad-43ec-bae4-4f2f929d82b0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "markAsRead",
+        "messageId": "={{ $('Gmail Trigger').item.json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        304,
+        688
+      ],
+      "id": "754deec9-df0a-4123-828d-6bfac278a9af",
+      "name": "Mark a message as read3",
+      "webhookId": "07812003-fb41-442d-b499-4e0fc944b3a0",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## PROJETOS - AGENTE DE PRÉ VENDAS ",
+        "height": 624,
+        "width": 2112
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -48,
+        -1040
+      ],
+      "typeVersion": 1,
+      "id": "6aed4c70-8851-4643-bf0a-958d7a28d864",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Meu título: {{ $('Gmail Trigger').item.json.subject }}\n\nMeu Texto: {{ $('Gmail Trigger').item.json.text }}\n\nEmail: {{ $('Gmail Trigger').item.json.from.value[0].address }}\n\nNome: {{ $('Gmail Trigger').item.json.from.value[0].name }}\n\nData de Recebimento: {{ $('Gmail Trigger').item.json.date }}\n\n",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Você é um engenheiro de dados responsável por analisar demandas técnicas recebidas por e-mail, WhatsApp ou formulário. Sua função é interpretar essas solicitações e gerar um JSON com informações técnicas e comerciais para uso em CRM e pré-vendas.\nVocê deve gerar um único objeto JSON, com todos os campos em formato texto corrido, sem listas ou arrays, mesmo quando houver múltiplos itens.\nAlém dos campos técnicos e comerciais, inclua três perguntas importantes que devem ser feitas na primeira reunião com o cliente, para melhor entendimento do projeto.\n---\nO JSON deve conter os seguintes campos:\n- resumo: descrição técnica resumida da demanda\n- escopo: etapas técnicas propostas, descritas em texto corrido\n- estimativa_de_esforco: tempo estimado por fase do projeto (também em texto corrido)\n- stack_sugerida: ferramentas/tecnologias recomendadas, separadas por vírgula\n- nome: nome do solicitante\n- email: e-mail do solicitante\n- data_de_recebimento: data da solicitação no formato ISO\n- motivo_do_contato: qual foi o motivo inicial da solicitação\n- escopo_resumido: escopo técnico em uma frase\n- estimativa_resumida: tempo total estimado do projeto\n- riscos_resumidos: possíveis riscos ou obstáculos\n- perguntas_para_reuniao: três perguntas que devem ser feitas na primeira conversa, em uma única string com pontuação adequada\nAdicionalmente, gere dois novos campos no final do JSON:\n- subject: assunto do e-mail de resposta automática\n- mensagem_email: corpo do e-mail de resposta (em texto corrido), utilizando o nome do solicitante e o resumo do projeto\nUse um tom profissional e acolhedor.\nExemplo esperado:\n\"subject\": \"Sobre sua solicitação – Projeto de Dados\",\n\"mensagem_email\": \"Olá João da Silva,\\n\\nRecebemos sua solicitação e já estamos avaliando os detalhes técnicos do seu projeto. Nossa equipe de engenharia de dados preparou uma proposta inicial com base nas informações enviadas. Em breve, entraremos em contato para alinhar próximos passos.\\n\\nAtenciosamente,\\nEquipe Red Rex\\n\\n---\\nResumo do pedido: [resumo aqui]\"\n---\n**Formato de resposta esperado: apenas um JSON. Não inclua explicações ou quebras de linha.**\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        512,
+        -784
+      ],
+      "id": "b8af2010-1a7c-42b1-a4c5-98b8b6539a20",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        384,
+        -576
+      ],
+      "id": "3579d085-3225-480f-8c21-2f52318c7016",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "rJGHj8xVHwntB8Xc",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        640,
+        -528
+      ],
+      "id": "aee65a41-0e83-40af-9cb0-005784091ff5",
+      "name": "Think"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1ytmWOkexXUKflLGpc0EmZvhCJNL_PHJnwAW18lqSsUg",
+          "mode": "list",
+          "cachedResultName": "Jornada_CRM_Email",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ytmWOkexXUKflLGpc0EmZvhCJNL_PHJnwAW18lqSsUg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ytmWOkexXUKflLGpc0EmZvhCJNL_PHJnwAW18lqSsUg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "  Resumo": "={{ $json.output.resumo }}",
+            "Escopo": "={{ $json.output.escopo }}",
+            "Estimativa de Esforço": "={{ $json.output.estimativa_de_esforco }}",
+            "Stack Sugerida": "={{ $json.output.stack_sugerida }}",
+            "Nome": "={{ $json.output.nome }}",
+            "Email": "={{ $json.output.email }}",
+            "Data de Recebimento": "={{ $json.output.data_de_recebimento }}",
+            "Motivo do Contato": "={{ $json.output.motivo_do_contato }}",
+            "Escopo resumido": "={{ $json.output.escopo_resumido }}",
+            "Estimativa Resumida": "={{ $json.output.estimativa_resumida }}",
+            "Riscos Resumidos": "={{ $json.output.riscos_resumidos }}",
+            "Perguntas para Reunião": "={{ $json.output.perguntas_para_reuniao }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "  Resumo",
+              "displayName": "  Resumo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Escopo",
+              "displayName": "Escopo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Estimativa de Esforço",
+              "displayName": "Estimativa de Esforço",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Stack Sugerida",
+              "displayName": "Stack Sugerida",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Data de Recebimento",
+              "displayName": "Data de Recebimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Motivo do Contato",
+              "displayName": "Motivo do Contato",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Escopo resumido",
+              "displayName": "Escopo resumido",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Estimativa Resumida",
+              "displayName": "Estimativa Resumida",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Riscos Resumidos",
+              "displayName": "Riscos Resumidos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Perguntas para Reunião",
+              "displayName": "Perguntas para Reunião",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "useAppend": true
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        976,
+        -864
+      ],
+      "id": "427e3afb-c7bc-4071-b51e-14c78c7c1295",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "O714q9hLnG61u8xY",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"resumo\": \"Cliente deseja automatizar relatórios de vendas diários, integrando os dados do ERP interno a um sistema de dashboards atualizados automaticamente.\",\n  \"escopo\": \"Coleta de dados via API REST, armazenamento em BigQuery, transformação com dbt e visualização com Looker Studio.\",\n  \"estimativa_de_esforco\": \"Coleta: 5 dias, Transformação: 3 dias, Visualização: 2 dias.\",\n  \"stack_sugerida\": \"Airbyte, dbt, BigQuery, Looker Studio.\",\n  \"nome\": \"João da Silva\",\n  \"email\": \"joao@empresa.com\",\n  \"data_de_recebimento\": \"2025-07-03T14:00:00Z\",\n  \"motivo_do_contato\": \"Solicitou automação de relatórios de vendas recorrentes.\",\n  \"escopo_resumido\": \"Pipeline automatizado com dashboard integrado.\",\n  \"estimativa_resumida\": \"3 semanas de duração total estimada.\",\n  \"riscos_resumidos\": \"Instabilidade da API, ausência de documentação do ERP e possíveis limitações de acesso.\",\n  \"perguntas_para_reuniao\": \"1. O ERP atual possui documentação da API e acesso técnico disponível? 2. Existe um padrão de atualização e limpeza dos dados que devemos seguir? 3. Qual ferramenta de visualização é preferida pelo time de tomada de decisão?\",\n  \"subject\": \"Sobre sua solicitação – Projeto de Dados\",\n\"mensagem_email\": \"Olá João da Silva,\\n\\nRecebemos sua solicitação e já estamos avaliando os detalhes técnicos do seu projeto. Nossa equipe de engenharia de dados preparou uma proposta inicial com base nas informações enviadas. Em breve, entraremos em contato para alinhar próximos passos.\\n\\nAtenciosamente,\\nEquipe Red Rex\\n\\n---\\nResumo do pedido: [resumo aqui]\"\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        800,
+        -576
+      ],
+      "id": "fa0de7c5-49d3-49ff-a381-e2c96860550f",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "folderId": "1HRJ10zMfhy9qjQ9_13jam85nqa6aHtiP",
+        "title": "=Proposta Solicitada - {{ $('Gmail Trigger').item.json.id }}"
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        1376,
+        -688
+      ],
+      "id": "26b16e2a-fbb4-4ddc-a905-9f2a3c6909d1",
+      "name": "Create a document",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "Uy4QDHbajHPeyziq",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ $json.id }}",
+        "simple": false,
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "insert",
+              "text": "={{ $('Code').item.json.texto }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        1600,
+        -688
+      ],
+      "id": "9b160a44-b84b-481b-b6de-e282481ea118",
+      "name": "Update a document",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "Uy4QDHbajHPeyziq",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Supondo que a entrada venha como items[0].json.output\nconst data = items[0].json.output;\n\nconst doc = {\n  titulo: `Proposta – ${data.nome}`,\n  data_recebimento: new Date(data.data_de_recebimento).toLocaleDateString(\"pt-BR\"),\n  cliente: {\n    nome: data.nome,\n    email: data.email,\n    motivo: data.motivo_do_contato,\n  },\n  projeto: {\n    resumo: data.resumo,\n    escopo: data.escopo,\n    escopo_resumido: data.escopo_resumido,\n    estimativa: data.estimativa_de_esforco,\n    estimativa_resumida: data.estimativa_resumida,\n    stack_sugerida: data.stack_sugerida,\n    riscos: data.riscos_resumidos,\n  },\n  reuniao: {\n    perguntas: data.perguntas_para_reuniao.split(\"?\").map(p => p.trim()).filter(Boolean)\n  },\n  comunicacao: {\n    assunto_email: data.subject,\n    mensagem_email: data.mensagem_email\n  }\n};\n\nreturn [{ json: doc }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        976,
+        -688
+      ],
+      "id": "885fd7d3-d266-4108-b933-27207efb8f89",
+      "name": "transform_documents_proposta"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = items[0].json; // seu transform_documents_proposta\n\nlet texto = `\n📄 ${data.titulo}\nData de recebimento: ${data.data_recebimento}\n\n👤 Cliente\nNome: ${data.cliente.nome}\nEmail: ${data.cliente.email}\nMotivo: ${data.cliente.motivo}\n\n📌 Projeto\nResumo: ${data.projeto.resumo}\nEscopo: ${data.projeto.escopo}\nEscopo resumido: ${data.projeto.escopo_resumido}\nEstimativa detalhada: ${data.projeto.estimativa}\nEstimativa resumida: ${data.projeto.estimativa_resumida}\nStack sugerida: ${data.projeto.stack_sugerida}\nRiscos: ${data.projeto.riscos}\n\n🗓️ Reunião\nPerguntas:\n- ${data.reuniao.perguntas.join(\"\\n- \")}\n\n📨 Comunicação\nAssunto: ${data.comunicacao.assunto_email}\nMensagem:\n${data.comunicacao.mensagem_email}\n`;\n\nreturn [{ json: { texto } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1168,
+        -688
+      ],
+      "id": "03edb068-886b-43aa-b5c9-302562e9b6d8",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "={{ $('AI Agent').item.json.output.subject }}",
+        "message": "={{ $('AI Agent').item.json.output.mensagem_email }}",
+        "options": {
+          "sendTo": "={{ $json.output.email }}"
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        976,
+        -1024
+      ],
+      "id": "fbb81a23-3fde-494b-9aac-a4340ceb58f3",
+      "name": "Create a draft",
+      "webhookId": "4027342f-0278-40c0-a940-039c9cecf078",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## ALUNOS- AGENTE DE COMUNICAÇÃO DE DÚVIDAS ",
+        "height": 512,
+        "width": 2112
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -48,
+        -400
+      ],
+      "typeVersion": 1,
+      "id": "88c82817-8175-4989-a602-f7272f3f2888",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Meu título: {{ $('Gmail Trigger').item.json.subject }}\n\nMeu Texto: {{ $('Gmail Trigger').item.json.text }}\n\nEmail: {{ $('Gmail Trigger').item.json.from.value[0].address }}\n\nNome: {{ $('Gmail Trigger').item.json.from.value[0].name }}\n\nData de Recebimento: {{ $('Gmail Trigger').item.json.date }}\n\n",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Você é um engenheiro de dados responsável por analisar demandas técnicas recebidas por e-mail, WhatsApp ou formulário. Sua função é interpretar essas solicitações e gerar um JSON com informações técnicas e comerciais para uso em CRM e pré-vendas.\nVocê deve gerar um único objeto JSON, com todos os campos em formato texto corrido, sem listas ou arrays, mesmo quando houver múltiplos itens.\nAlém dos campos técnicos e comerciais, inclua três perguntas importantes que devem ser feitas na primeira reunião com o cliente, para melhor entendimento do projeto.\n---\nO JSON deve conter os seguintes campos:\n- resumo: descrição técnica resumida da demanda\n- escopo: etapas técnicas propostas, descritas em texto corrido\n- estimativa_de_esforco: tempo estimado por fase do projeto (também em texto corrido)\n- stack_sugerida: ferramentas/tecnologias recomendadas, separadas por vírgula\n- nome: nome do solicitante\n- email: e-mail do solicitante\n- data_de_recebimento: data da solicitação no formato ISO\n- motivo_do_contato: qual foi o motivo inicial da solicitação\n- escopo_resumido: escopo técnico em uma frase\n- estimativa_resumida: tempo total estimado do projeto\n- riscos_resumidos: possíveis riscos ou obstáculos\n- perguntas_para_reuniao: três perguntas que devem ser feitas na primeira conversa, em uma única string com pontuação adequada\nAdicionalmente, gere dois novos campos no final do JSON:\n- subject: assunto do e-mail de resposta automática\n- mensagem_email: corpo do e-mail de resposta (em texto corrido), utilizando o nome do solicitante e o resumo do projeto\nUse um tom profissional e acolhedor.\nExemplo esperado:\n\"subject\": \"Sobre sua solicitação – Projeto de Dados\",\n\"mensagem_email\": \"Olá João da Silva,\\n\\nRecebemos sua solicitação e já estamos avaliando os detalhes técnicos do seu projeto. Nossa equipe de engenharia de dados preparou uma proposta inicial com base nas informações enviadas. Em breve, entraremos em contato para alinhar próximos passos.\\n\\nAtenciosamente,\\nEquipe Red Rex\\n\\n---\\nResumo do pedido: [resumo aqui]\"\n---\n**Formato de resposta esperado: apenas um JSON. Não inclua explicações ou quebras de linha.**\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        512,
+        -288
+      ],
+      "id": "89bea47a-c631-4a93-a341-a01b5fe296bc",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        432,
+        -32
+      ],
+      "id": "6105f99c-8031-4c0e-8770-a28902c2528a",
+      "name": "Google Gemini Chat Model2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "rJGHj8xVHwntB8Xc",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"subject\": \"Sobre sua solicitação – Projeto de Dados\",\n\"mensagem_email\": \"Olá João da Silva,\\n\\nRecebemos sua solicitação e já estamos avaliando os detalhes técnicos do seu projeto. Nossa equipe de engenharia de dados preparou uma proposta inicial com base nas informações enviadas. Em breve, entraremos em contato para alinhar próximos passos.\\n\\nAtenciosamente,\\nEquipe Red Rex\\n\\n---\\nResumo do pedido: [resumo aqui]\"\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        688,
+        -64
+      ],
+      "id": "4326401d-45f1-4da8-82ce-cf504c1f6711",
+      "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Gmail Trigger').item.json.from.value[0].address }}",
+        "subject": "={{ $json.output.subject }}",
+        "emailType": "text",
+        "message": "={{ $json.output.mensagem_email }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        832,
+        -288
+      ],
+      "id": "27673598-81fa-4097-bf97-5064ac3215d2",
+      "name": "Send a message",
+      "webhookId": "4027342f-0278-40c0-a940-039c9cecf078",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## SPAM- AGENTE DE EXCLUSÃO DE E-MAILS DE SPAM ",
+        "height": 400,
+        "width": 2112,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -48,
+        128
+      ],
+      "typeVersion": 1,
+      "id": "74d44267-a132-4482-8e1c-d11ca22af320",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "messageId": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        464,
+        272
+      ],
+      "id": "bf25d9a6-d87d-4a6e-a530-606a313ffff0",
+      "name": "Delete a message",
+      "webhookId": "6e568e28-04ae-4b5a-b00c-868f0c416d14",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "9HEgtyh6pJR1HAwz",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## CLASSIFICADOR- AGENTE DE CLASSIFICAÇÃO DE E-MAIL",
+        "height": 2096,
+        "width": 688,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -752,
+        -1040
+      ],
+      "typeVersion": 1,
+      "id": "0762c6dd-faa2-4d09-ae4e-45319b0aa267",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## URGÊNCIA- AGENTE DE ENVIO DE MENSAGENS NO WHATSAPPS ",
+        "height": 512,
+        "width": 2112
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -48,
+        544
+      ],
+      "typeVersion": 1,
+      "id": "11ab6140-f747-4d81-bc5f-eda2b8535953",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Data de recebimento: {{ $('Gmail Trigger').item.json.headers.date }}\nFrom: {{ $('Gmail Trigger').item.json.headers.from }}\nMensagem: {{ $('Gmail Trigger').item.json.text }}\n",
+        "options": {
+          "systemMessage": "Você é um agente inteligente que ajuda a classificar e resumir e-mails.\nSua tarefa é:\n1. Ler o conteúdo do e-mail fornecido.\n2. Analisar se a mensagem é urgente, com base em termos como: \"erro\", \"cancelamento\", \"problema\", \"atraso\", \"urgente\", \"reclamação\", \"falha\", \"responder hoje\", \"última tentativa\".\n3. Classificar a mensagem como:\n   - URGENTE: exige atenção imediata–\n   - NÃO URGENTE: pode ser lida depois\n   - IRRELEVANTE: spam, promoções, mensagens automáticas\n4. Criar uma resposta curta para ser enviada via WhatsApp, contendo:\n   - A classificação de urgência\n   - Um resumo breve (1 a 2 frases) do e-mail\n   - Um campo “ação sugerida” caso for URGENTE\nNão usar campos especiais ou quebras como \\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        512,
+        688
+      ],
+      "id": "b8fb7259-fe0a-4db9-9420-faa023f46c49",
+      "name": "AI Agent2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        432,
+        896
+      ],
+      "id": "72126607-8953-467f-8ec3-25e236fa7c82",
+      "name": "Google Gemini Chat Model3",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "rJGHj8xVHwntB8Xc",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://evolution.egdconsultoria.shop/message/sendText/ChatBot EGD",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "4DB810320F30-4001-B307-C04D2937BB77"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"+5511940502208\",\n    \"text\": \"{{ $json.output }}\"\n  }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        864,
+        688
+      ],
+      "id": "62cc564f-2f8c-4ce5-9e25-04bbe92cc276",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolThink",
+      "typeVersion": 1.1,
+      "position": [
+        656,
+        912
+      ],
+      "id": "7667e70b-1274-4c01-a2de-9cfb58c48697",
+      "name": "Think1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Text Classifier",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Classifier": {
+      "main": [
+        [
+          {
+            "node": "Add label to message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Add label to message1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Add label to message2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Add label to message3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add label to message": {
+      "main": [
+        [
+          {
+            "node": "Mark a message as read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add label to message1": {
+      "main": [
+        [
+          {
+            "node": "Mark a message as read1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add label to message2": {
+      "main": [
+        [
+          {
+            "node": "Mark a message as read2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add label to message3": {
+      "main": [
+        [
+          {
+            "node": "Mark a message as read3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark a message as read": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "transform_documents_proposta",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create a draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a document": {
+      "main": [
+        [
+          {
+            "node": "Update a document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "transform_documents_proposta": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Create a document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a document": {
+      "main": [
+        []
+      ]
+    },
+    "Mark a message as read1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark a message as read2": {
+      "main": [
+        [
+          {
+            "node": "Delete a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark a message as read3": {
+      "main": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Think1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "67f96193-b641-4cd4-b822-d6a7b0387f20",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b7c1fe45e78f5953159ad165952c76ae1ea1f19abedddb299bd3459a46f42217"
+  },
+  "id": "My7DEPxxbscaQvnG",
+  "tags": []
+}
